@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>My Market - Your Neighborhood Supermarket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefaf5;
+            color: #1e2a2e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Nav */
+        header {
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f0e4d0;
+        }
+
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #2b7a3e, #f4a261);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #e76f51;
+            display: block;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2d3e3f;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #e76f51;
+            border-bottom: 2px solid #e76f51;
+            padding-bottom: 4px;
+        }
+
+        /* mobile menu icon hidden on desktop */
+        .menu-icon {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(105deg, #fef9f0 0%, #fff3e6 100%);
+            padding: 60px 0 50px;
+            border-bottom: 1px solid #ffe5cc;
+        }
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-text h2 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            color: #2b5e3b;
+            margin-bottom: 16px;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #5a5e5c;
+            margin-bottom: 24px;
+            max-width: 500px;
+        }
+        .btn {
+            display: inline-block;
+            background: #e76f51;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #e76f51;
+            color: #e76f51;
+        }
+        .btn-outline:hover {
+            background: #e76f51;
+            color: white;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image i {
+            font-size: 12rem;
+            color: #f4a261;
+            filter: drop-shadow(8px 12px 18px rgba(0,0,0,0.05));
+        }
+
+        /* Section general */
+        section {
+            padding: 70px 0;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: #f4a261;
+            border-radius: 4px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid #f8e7d8;
+            transition: 0.2s;
+        }
+        .card i {
+            font-size: 2.2rem;
+            color: #e76f51;
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 18px 0;
+            flex-wrap: wrap;
+        }
+        .contact-detail i {
+            width: 32px;
+            font-size: 1.4rem;
+            color: #2b7a3e;
+        }
+        hr {
+            margin: 30px 0;
+            border-color: #f0e0cf;
+        }
+        footer {
+            background: #1e2a2e;
+            color: #e9e2d8;
+            padding: 50px 0 30px;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: #f4a261;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        .footer-col p, .footer-col a {
+            color: #cfcfc4;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #3a4a4d;
+            padding-top: 28px;
+            font-size: 0.85rem;
+        }
+        .badge {
+            background: #f4f0ea;
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 16px;
+                background: white;
+                padding: 24px;
+                margin-top: 18px;
+                border-radius: 24px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+        }
+        button {
+            background: none;
+            border: none;
+        }
+        .store-hours {
+            background: #fef3e8;
+            border-radius: 28px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <h1>My Market</h1>
+                <span>your neighbourhood supermarket</span>
+            </div>
+            <div class="menu-icon" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#terms" class="nav-link">Terms</a></li>
+                <li><a href="#privacy" class="nav-link">Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- HOME Section -->
+    <section id="home">
+        <div class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h2>Fresh Groceries, <br> Everyday Value</h2>
+                    <p>Welcome to My Market – your one-stop supermarket for fresh produce, daily essentials & great savings. Open 7 days a week!</p>
+                    <a href="#contact" class="btn">Shop with us <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-shopping-basket"></i>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div style="margin-top: 40px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <div class="badge"><i class="fas fa-tag"></i> Best Prices</div>
+                <div class="badge"><i class="fas fa-leaf"></i> Fresh & Organic</div>
+                <div class="badge"><i class="fas fa-clock"></i> 9 AM - 9 PM</div>
+                <div class="badge"><i class="fas fa-truck"></i> Home Delivery</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About My Market</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <i class="fas fa-store"></i>
+                    <h3>Who We Are</h3>
+                    <p><strong>aavni global enterprises</strong> proudly operates <strong>My Market</strong> — a modern supermarket rooted in quality, convenience, and community values. We bring the finest groceries, fresh fruits & vegetables, dairy, bakery, and household essentials under one roof.</p>
+                    <p style="margin-top: 12px;">Our mission: to deliver exceptional value and an enjoyable shopping experience to every family in Noida and beyond.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Visit Our Store</h3>
+                    <p><strong>📍 Address:</strong><br>Floor 19, C-001/A2<br>Sector 16B, Noida, Uttar Pradesh 201301</p>
+                    <p style="margin-top: 12px;"><i class="fas fa-phone-alt"></i> <strong>Call:</strong> 6399599959<br><i class="fas fa-envelope"></i> <strong>Email:</strong> aavniglobalenterprise@gmail.com</p>
+                </div>
+            </div>
+            <div class="store-hours" style="margin-top: 32px;">
+                <i class="fas fa-clock"></i> <strong>Store Hours:</strong> Monday - Sunday : 9:00 AM – 9:00 PM (including public holidays)
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page Section (Official Contact Page) -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Get in Touch</h3>
+                    <div class="contact-detail"><i class="fas fa-mobile-alt"></i> <span><strong>Mobile:</strong> 6399599959</span></div>
+                    <div class="contact-detail"><i class="fas fa-envelope"></i> <span><strong>Email:</strong> aavniglobalenterprise@gmail.com</span></div>
+                    <div class="contact-detail"><i class="fas fa-map-pin"></i> <span><strong>Address:</strong> Floor 19, C-001/A2, Sector 16B, Noida, UP 201301</span></div>
+                    <hr>
+                    <p><i class="fas fa-clock"></i> <strong>Customer Support Hours:</strong> 10 AM – 7 PM (Mon-Sat)</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-paper-plane"></i>
+                    <h3>Quick Message</h3>
+                    <p>For bulk orders, partnership or feedback, please reach out via email or call. We respond within 24 hours.</p>
+                    <div style="background:#fef3e8; border-radius: 20px; padding: 16px; margin-top: 16px;">
+                        <i class="fas fa-store"></i> <strong>My Market (aavni global enterprises)</strong><br>
+                        <small>Your satisfaction is our priority — we look forward to serving you!</small>
+                    </div>
+                </div>
+            </div>
+            <!-- map placeholder / direction -->
+            <div style="margin-top: 35px; background: #e9f0e6; border-radius: 32px; padding: 24px; text-align: center;">
+                <i class="fas fa-location-dot" style="font-size: 2rem; color:#2b7a3e;"></i>
+                <p><strong>📍 Find us easily:</strong> Floor 19, C-001/A2, Sector 16B, Noida (Near main market road).<br>Parking available for customers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms & Conditions Section -->
+    <section id="terms">
+        <div class="container">
+            <h2 class="section-title">Terms & Conditions</h2>
+            <div class="card" style="background: white;">
+                <p><strong>Effective Date:</strong> 1st January 2026</p>
+                <p>Welcome to My Market (operated by aavni global enterprises). By accessing our website or purchasing from our supermarket, you agree to the following terms:</p>
+                <ul style="margin: 20px 0 0 25px; line-height: 1.7;">
+                    <li><strong>Product Information:</strong> We strive for accuracy in product descriptions, prices, and availability. However, errors may occur; we reserve the right to correct any inaccuracies.</li>
+                    <li><strong>Pricing & Payments:</strong> All prices are in INR. We accept cash, cards, and UPI at our physical store. Online orders (if applicable) follow standard payment gateway terms.</li>
+                    <li><strong>Return & Refund:</strong> Perishable items cannot be returned unless defective. Non-perishables in original condition can be exchanged within 48 hours with valid receipt.</li>
+                    <li><strong>Delivery Terms:</strong> Local delivery within 5 km of Sector 16B available (min order ₹199). Delivery charges may apply. Estimated delivery within 2-4 hours.</li>
+                    <li><strong>Limitation of Liability:</strong> My Market is not liable for any indirect damages arising from product use or store visit beyond applicable laws.</li>
+                    <li><strong>Modifications:</strong> We may update these T&Cs periodically. Continued use implies acceptance of changes.</li>
+                    <li><strong>Governing Law:</strong> These terms are governed by the laws of Uttar Pradesh, India.</li>
+                </ul>
+                <p style="margin-top: 20px;">For any disputes or clarifications, contact us at aavniglobalenterprise@gmail.com or call 6399599959.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Section -->
+    <section id="privacy">
+        <div class="container">
+            <h2 class="section-title">Privacy Policy</h2>
+            <div class="card" style="background: white;">
+                <p>At My Market (aavni global enterprises), we respect your privacy. This policy explains how we collect, use, and protect your personal data when you interact with us.</p>
+                <h3 style="margin: 20px 0 8px 0;">1. Information We Collect</h3>
+                <p>We may collect personal details such as name, contact number, email, and address when you make a purchase, sign up for offers, or contact customer service. We also collect transaction history and preferences.</p>
+                <h3>2. How We Use Your Information</h3>
+                <p>To process orders, improve our services, send promotional updates (with your consent), and ensure store safety & customer support. We never sell your data to third parties.</p>
+                <h3>3. Data Security</h3>
+                <p>We implement industry-standard security measures to protect your information. However, no online transmission is 100% secure. Our physical store follows strict confidentiality practices.</p>
+                <h3>4. Cookies & Tracking</h3>
+                <p>Our website uses cookies to enhance browsing experience and analyze traffic. You may disable cookies via browser settings.</p>
+                <h3>5. Your Rights</h3>
+                <p>You may request access, correction, or deletion of your personal data by emailing aavniglobalenterprise@gmail.com. We will respond within 30 days.</p>
+                <h3>6. Third-Party Links</h3>
+                <p>Our site may contain links to external sites. We are not responsible for their privacy practices.</p>
+                <p><strong>Policy updates:</strong> Any changes will be posted on this page. Last updated: April 2026.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer with copyright and extra links -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>My Market</h4>
+                <p>Your everyday supermarket delivering freshness & trust. Operated by aavni global enterprises.</p>
+                <p style="margin-top: 10px;"><i class="fas fa-phone"></i> 6399599959</p>
+                <p><i class="fas fa-envelope"></i> aavniglobalenterprise@gmail.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <p><a href="#home">Home</a></p>
+                <p><a href="#about">About Us</a></p>
+                <p><a href="#contact">Contact</a></p>
+                <p><a href="#terms">Terms & Conditions</a></p>
+                <p><a href="#privacy">Privacy Policy</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>Visit Store</h4>
+                <p>Floor 19, C-001/A2<br>Sector 16B, Noida,<br>Uttar Pradesh 201301</p>
+                <p><i class="fas fa-clock"></i> Open daily 9AM - 9PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 My Market (aavni global enterprises). All rights reserved. | Designed with <i class="fas fa-heart" style="color:#e76f51;"></i> for our community</p>
+            <p style="margin-top: 8px; font-size: 0.75rem;">Copyright by My Market — India | CIN: U52100UP2026PTC12345 (example)</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Smooth scroll and mobile toggle -->
+<script>
+    // mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+
+    // active link highlight & smooth scroll
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-link');
+
+    function setActiveLink() {
+        let scrollPos = window.scrollY + 120;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                const currentId = section.getAttribute('id');
+                navItems.forEach(link => {
+                    link.classList.remove('active');
+                    const href = link.getAttribute('href').substring(1);
+                    if (href === currentId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener('scroll', setActiveLink);
+    window.addEventListener('load', setActiveLink);
+
+    // smooth scroll for all anchor links with # (including nav)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href').substring(1);
+            if (targetId && document.getElementById(targetId)) {
+                e.preventDefault();
+                const targetElement = document.getElementById(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // close mobile menu after click
+                if (navLinks.classList.contains('show')) {
+                    navLinks.classList.remove('show');
+                }
+                // update URL without jump (optional)
+                history.pushState(null, null, `#${targetId}`);
+            }
+        });
+    });
+
+    // handle initial hash on load
+    if(window.location.hash) {
+        const id = window.location.hash.substring(1);
+        const el = document.getElementById(id);
+        if(el) {
+            setTimeout(() => {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    }
+</script>
+</body>
+</html>
